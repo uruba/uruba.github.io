@@ -1,0 +1,86 @@
+@mixin vertical-center {
+  position: relative;
+  top: 50%;
+  -webkit-transform:  translateY(-50%);
+  -ms-transform:      translateY(-50%);
+  transform:          translateY(-50%);
+}
+
+@mixin horizontal-center {
+  position: relative;
+  left: 50%;
+  -webkit-transform:  translateX(-50%);
+  -ms-transform:      translateX(-50%);
+  transform:          translateX(-50%);
+}
+
+@mixin horizontal-center-flex {
+  display: flex !important;
+  justify-content: center;
+  float: none;
+}
+
+@mixin transform-none {
+  -webkit-transform:  none;
+  -ms-transform:      none;
+  transform:          none;
+}
+
+@mixin rotate-elem($deg) {
+  -webkit-transform:  rotate($deg);
+  -ms-transform:      rotate($deg);
+  transform:          rotate($deg);
+}
+
+@mixin disable-selectability {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -ms-user-select: none;
+}
+
+@mixin element-animation($animation_name, $duration, $delay: 0) {
+  animation-name: $animation_name;
+  animation-duration: $duration;
+  animation-delay: $delay;
+  animation-fill-mode: both;
+}
+
+@mixin dark-background {
+  background-color: $complementary_blue;
+  color: white;
+}
+
+@mixin dark-background-transparent($transparency) {
+  background-color: rgba($complementary_blue, $transparency);
+  color: white;
+}
+
+@mixin drop-shadow($hor, $ver, $blur, $spread, $color) {
+  -webkit-box-shadow: $hor $ver $blur $spread $color;
+  -moz-box-shadow:    $hor $ver $blur $spread $color;
+  box-shadow:         $hor $ver $blur $spread $color;
+}
+
+@mixin dashed-border($dashlength, $gaplength, $borderwidth, $color, $position: top) {
+  $per: percentage($dashlength / ($dashlength + $gaplength));
+  background-image: linear-gradient(to right, $color 0%, $color $per, rgba(0, 0, 0, 0) $per);
+  background-position: 0 $position;
+  background-size: ($dashlength + $gaplength) $borderwidth;
+  background-repeat: repeat-x;
+}
+
+@mixin block-pseudo-element {
+  content: "";
+  display: block;
+}
+
+@mixin media-query($width) {
+    @media only screen and (max-width: $width) {
+      @content;
+    }
+}
+
+@mixin font-family-patrick {
+  font-family: 'Patrick Hand', cursive;
+}
