@@ -26,6 +26,44 @@ p {
     text-decoration: none;
 
     border-bottom: 1px dashed $text_gray;
+
+    &.contact {
+      font-style: normal;
+
+      position: relative;
+
+      &:before {
+        display: none;
+
+        content: attr(data-tooltip);
+
+        position: absolute;
+        left: 50%;
+        bottom: 100%;
+
+        -webkit-transform:  translateX(-50%);
+        -ms-transform:      translateX(-50%);
+        transform:          translateX(-50%);
+
+        padding: 10px 25px;
+
+        color: white;
+        text-align: center;
+        font-weight: $regular;
+
+        background: $main_orange;
+        @include border-radius(5px);
+
+        white-space: nowrap;
+      }
+
+      &:hover {
+        &:before {
+          display: block;
+          @include element-animation(appear, 0.4s);
+        }
+      }
+    }
   }
 
   &:last-of-type {

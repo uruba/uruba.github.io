@@ -62,6 +62,12 @@
   box-shadow:         $hor $ver $blur $spread $color;
 }
 
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius:    $radius;
+  border-radius:         $radius;
+}
+
 @mixin dashed-border($dashlength, $gaplength, $borderwidth, $color, $position: top) {
   $per: percentage($dashlength / ($dashlength + $gaplength));
   background-image: linear-gradient(to right, $color 0%, $color $per, rgba(0, 0, 0, 0) $per);
