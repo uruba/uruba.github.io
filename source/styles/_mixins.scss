@@ -56,6 +56,17 @@
   color: white;
 }
 
+@mixin filter-grayscale {
+  filter: gray;
+  filter: grayscale(1);
+  -webkit-filter: grayscale(1);
+}
+
+@mixin filter-none {
+  filter: none;
+  -webkit-filter: grayscale(0);
+}
+
 @mixin drop-shadow($hor, $ver, $blur, $spread, $color) {
   -webkit-box-shadow: $hor $ver $blur $spread $color;
   -moz-box-shadow:    $hor $ver $blur $spread $color;

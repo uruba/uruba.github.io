@@ -22,6 +22,10 @@ header {
     padding-top: 0;
   }
 
+  @include media-query($narrow_screen) {
+    height: 100%;
+  }
+
   #hero {
     width: 45%;
     height: 150px;
@@ -91,7 +95,7 @@ header {
         top: -128px;
         left: 8px;
 
-        background-image: url("./images/icon_envelope.png");
+        background-image: url("./images/icon_envelope.svg");
 
         opacity: 0;
         @include element-animation(fadeIn, 3s, 3.2s);
@@ -105,6 +109,10 @@ header {
           margin: 0 auto;
         }
 
+        @include media-query($narrow_screen) {
+          top: 32px;
+        }
+
         a {
           display: inherit;
 
@@ -115,14 +123,14 @@ header {
         &::after {
           @include block-pseudo-element;
 
-          width: 46px;
-          height: 107px;
+          width: 45px;
+          height: 105px;
 
           position: relative;
           top: 12px;
-          left: -7px;
+          left: -8px;
 
-          background-image: url("./images/img_arrow_1.png");
+          background-image: url("./images/img_arrow_1.svg");
 
           @include media-query($paragraph_breaking_width) {
             display: none;
@@ -149,6 +157,10 @@ header {
     background-image: url("./images/bckg_sky.jpg");
     background-position: center 0;
     background-attachment: fixed;
+
+    @include media-query($narrow_screen) {
+      height: 100%;
+    }
   }
 }
 
@@ -215,7 +227,8 @@ section {
       margin-bottom: 48px;
 
       &::before {
-        background-image: url("./images/icon_services.png");
+        background-image: url("./images/icon_services.svg");
+        background-size: 34px;
       }
     }
 
@@ -223,7 +236,8 @@ section {
       margin-bottom: 28px;
 
       &::before {
-        background-image: url("./images/icon_skillset.png");
+        background-image: url("./images/icon_skillset.svg");
+        background-size: 38px;
       }
     }
 
@@ -262,19 +276,19 @@ section {
       &#programming::before {
         width: 72px;
         height: 44px;
-        background-image: url("./images/icon_programming.png");
+        background-image: url("./images/icon_programming.svg");
       }
 
       &#uimod::before {
         width: 72px;
         height: 67px;
-        background-image: url("./images/icon_uimod.png");
+        background-image: url("./images/icon_uimod.svg");
       }
 
       &#marketing::before {
         width: 72px;
         height: 62px;
-        background-image: url("./images/icon_marketing.png");
+        background-image: url("./images/icon_marketing.svg");
       }
     }
 
@@ -413,20 +427,22 @@ section {
 
         @include disable-selectability;
 
+        @include filter-grayscale;
+
         &.english_flag {
-          background-image: url("./images/icon_flag_english.png");
+          background-image: url("./images/icon_flag_english.svg");
         }
 
         &.swedish_flag {
-          background-image: url("./images/icon_flag_swedish.png");
+          background-image: url("./images/icon_flag_swedish.svg");
         }
 
         &.czech_flag {
-          background-image: url("./images/icon_flag_czech.png");
+          background-image: url("./images/icon_flag_czech.svg");
         }
 
         &.active, &:hover {
-          background-position: 0 28px;
+          @include filter-none;
         }
 
         &:first-of-type {
@@ -462,7 +478,7 @@ section {
 
           @include rotate-elem(10deg);
 
-          background-image: url("./images/img_arrow_2.png");
+          background-image: url("./images/img_arrow_2.svg");
         }
 
         @include media-query($language_chooser_msg_max_width) {
@@ -526,6 +542,9 @@ section {
       text-decoration: none;
 
       @include horizontal-center;
+      @include media-query($narrow_screen) {
+        padding: 15px;
+      }
     }
   }
 
@@ -542,20 +561,26 @@ section {
 
         margin-right: 40px;
 
+        @include filter-grayscale;
+
         &.gplay {
           width: 42px;
 
-          background-image: url("./images/icon_service_gplay.png");
+          background-image: url("./images/icon_service_gplay.svg");
         }
 
         &.github {
           width: 49px;
 
-          background-image: url("./images/icon_service_github.png");
+          background-image: url("./images/icon_service_github.svg");
+
+          opacity: 0.7;
         }
 
         &:hover {
-          background-position: 0 48px;
+          @include filter-none;
+
+          opacity: 1;
         }
 
         &:last-of-type {
@@ -649,8 +674,6 @@ footer {
 
   .box_active {
     background-color: $main_orange;
-
-
   }
 
   .box_inactive {
