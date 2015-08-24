@@ -46,6 +46,14 @@
   animation-fill-mode: both;
 }
 
+@mixin element-animation-none {
+  -webkit-animation: none;
+  -moz-animation: none;
+  -o-animation: none;
+  -ms-animation: none;
+  animation: none;
+}
+
 @mixin dark-background {
   background-color: $complementary_blue;
   color: white;

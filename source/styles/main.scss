@@ -47,6 +47,10 @@ header {
       padding: 32px 0;
     }
 
+    @include media-query($narrow_screen) {
+      @include element-animation-none;
+    }
+
     .name {
       font-size: 64px;
       font-weight: $bold;
@@ -160,6 +164,8 @@ header {
 
     @include media-query($narrow_screen) {
       height: 100%;
+      background-position: bottom;
+      background-attachment: scroll;
     }
   }
 }
