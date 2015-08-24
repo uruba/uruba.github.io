@@ -548,8 +548,8 @@ section {
       text-decoration: none;
 
       @include horizontal-center;
-      @include media-query($narrow_screen) {
-        padding: 15px;
+      @include media-query($super_small_screen) {
+        padding: 15px 18px;
       }
     }
   }
