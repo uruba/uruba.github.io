@@ -1,0 +1,45 @@
+section {
+  &#about {
+    ul.language_chooser {
+      li {
+        &.english_flag {
+          background-image: url("./images/icon_flag_english.png");
+       }
+
+        &.swedish_flag {
+          background-image: url("./images/icon_flag_swedish.png");
+        }
+
+        &.czech_flag {
+          background-image: url("./images/icon_flag_czech.png");
+        }
+
+        &.active, &:hover {
+          background-position: 0 28px;
+        }
+      }
+    }
+  }
+
+  &#example {
+    ul.example_projects {
+      & > li {
+        &.gplay {
+          width: 42px;
+
+          background-image: url("./images/icon_service_gplay.png");
+        }
+
+        &.github {
+          width: 49px;
+
+          background-image: url("./images/icon_service_github.png");
+        }
+
+        &:hover {
+          background-position: 0 48px;
+        }
+      }
+    }
+  }
+}

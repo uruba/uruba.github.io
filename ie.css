@@ -1,0 +1,29 @@
+section#about ul.language_chooser li.english_flag {
+  background-image: url("./images/icon_flag_english.png");
+}
+
+section#about ul.language_chooser li.swedish_flag {
+  background-image: url("./images/icon_flag_swedish.png");
+}
+
+section#about ul.language_chooser li.czech_flag {
+  background-image: url("./images/icon_flag_czech.png");
+}
+
+section#about ul.language_chooser li.active, section#about ul.language_chooser li:hover {
+  background-position: 0 28px;
+}
+
+section#example ul.example_projects > li.gplay {
+  width: 42px;
+  background-image: url("./images/icon_service_gplay.png");
+}
+
+section#example ul.example_projects > li.github {
+  width: 49px;
+  background-image: url("./images/icon_service_github.png");
+}
+
+section#example ul.example_projects > li:hover {
+  background-position: 0 48px;
+}
