@@ -119,6 +119,10 @@ li {
     width: 100%;
     padding: 0 48px;
   }
+
+  @include media-query($narrow_screen) {
+    padding: 0 28px;
+  }
 }
 
 .lighter {
