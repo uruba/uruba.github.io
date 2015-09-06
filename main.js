@@ -1,1 +1,111 @@
-(function(){var e,s,n,a,i;a=[{name:"english",chooseMessage:"Choose a language",heading:"Václav's story"},{name:"swedish",chooseMessage:"Välj ett språk",heading:"Václavs historia"},{name:"czech",chooseMessage:"Vyberte jazyk",heading:"O mně"}],e="active",i=function(e){var s,n,i,t,l;for(n="_flag",l="slide_",window.slidesClasses=[],i=0,t=a.length;t>i;i++)s=a[i],window.slidesClasses.push({parent:s,flagClass:s.name+n,slideId:l+s.name})},s=function(e){var s,n,i,t,l,o,r;for(s=new Array,i=0,t=a.length;t>i;i++)n=a[i],s.push(n.chooseMessage);o=s.slice(),l=$(".language_chooser .choose_message div"),r=function(){var e;e=o.shift(),o.push(e),l.fadeOut({complete:function(){l.text(e).fadeIn()}})},r(),setInterval(function(){r()},e)},n=function(){var e,s,n,a,i;return i=window.navigator.userAgent,s=i.indexOf("MSIE "),s>0?parseInt(i.substring(s+5,i.indexOf(".",s)),10):(a=i.indexOf("Trident/"),a>0?(n=i.indexOf("rv:"),parseInt(i.substring(n+3,i.indexOf(".",n)),10)):(e=i.indexOf("Edge/"),e>0?parseInt(i.substring(e+5,i.indexOf(".",e)),10):!1))},jQuery(function(a){a(document).ready(function(){n()&&a("head").append('<link rel="stylesheet" href="ie.css" type="text/css" />'),i(),s(4e3)}),a(".language_chooser > li").click(function(){var s,n,i,t,l,o,r,d,h,g;for(r=window.slidesClasses,i=0,l=r.length;l>i;i++)if(g=r[i],a(this).hasClass(g.flagClass)&&!a(this).hasClass(e)){for(h="#"+g.slideId,d=a(h),n=[a(this),d],t=0,o=n.length;o>t;t++)s=n[t],s.siblings().removeClass(e),s.addClass(e);a("h1#slide_heading").text(g.parent.heading);break}})})}).call(this);
+(function() {
+  var activeClass, cycleChooseMessage, detectIE, eligibleLangs, processLangs;
+
+  eligibleLangs = [
+    {
+      name: "english",
+      chooseMessage: "Choose a language",
+      heading: "Václav's story"
+    }, {
+      name: "swedish",
+      chooseMessage: "Välj ett språk",
+      heading: "Václavs historia"
+    }, {
+      name: "czech",
+      chooseMessage: "Vyberte jazyk",
+      heading: "O mně"
+    }
+  ];
+
+  activeClass = "active";
+
+  processLangs = function(langsArray) {
+    var eligibleLang, flagAppend, i, len, slidePrepend;
+    flagAppend = "_flag";
+    slidePrepend = "slide_";
+    window.slidesClasses = [];
+    for (i = 0, len = eligibleLangs.length; i < len; i++) {
+      eligibleLang = eligibleLangs[i];
+      window.slidesClasses.push({
+        parent: eligibleLang,
+        flagClass: eligibleLang.name + flagAppend,
+        slideId: slidePrepend + eligibleLang.name
+      });
+    }
+  };
+
+  cycleChooseMessage = function(delay) {
+    var chooseMessages, eligibleLang, i, len, messageElement, messagesQueue, nextMessage;
+    chooseMessages = new Array();
+    for (i = 0, len = eligibleLangs.length; i < len; i++) {
+      eligibleLang = eligibleLangs[i];
+      chooseMessages.push(eligibleLang.chooseMessage);
+    }
+    messagesQueue = chooseMessages.slice();
+    messageElement = $(".language_chooser .choose_message div");
+    nextMessage = function() {
+      var nextMessageText;
+      nextMessageText = messagesQueue.shift();
+      messagesQueue.push(nextMessageText);
+      messageElement.fadeOut({
+        complete: function() {
+          messageElement.text(nextMessageText).fadeIn();
+        }
+      });
+    };
+    nextMessage();
+    setInterval(function() {
+      nextMessage();
+    }, delay);
+  };
+
+  detectIE = function() {
+    var edge, msie, rv, trident, ua;
+    ua = window.navigator.userAgent;
+    msie = ua.indexOf('MSIE ');
+    if (msie > 0) {
+      return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+    }
+    trident = ua.indexOf('Trident/');
+    if (trident > 0) {
+      rv = ua.indexOf('rv:');
+      return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+    }
+    edge = ua.indexOf('Edge/');
+    if (edge > 0) {
+      return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+    }
+    return false;
+  };
+
+  jQuery(function($) {
+    $(document).ready(function() {
+      if (detectIE()) {
+        $('head').append('<link rel="stylesheet" href="ie.css" type="text/css" />');
+      }
+      processLangs();
+      cycleChooseMessage(4000);
+    });
+    $(".language_chooser > li").click(function() {
+      var activisedElement, activisedElements, i, j, len, len1, ref, slideElement, slideSelector, slidesClass;
+      ref = window.slidesClasses;
+      for (i = 0, len = ref.length; i < len; i++) {
+        slidesClass = ref[i];
+        if ($(this).hasClass(slidesClass.flagClass) && !$(this).hasClass(activeClass)) {
+          slideSelector = "#" + slidesClass.slideId;
+          slideElement = $(slideSelector);
+          activisedElements = [$(this), slideElement];
+          for (j = 0, len1 = activisedElements.length; j < len1; j++) {
+            activisedElement = activisedElements[j];
+            activisedElement.siblings().removeClass(activeClass);
+            activisedElement.addClass(activeClass);
+          }
+          $("h1#slide_heading").text(slidesClass.parent.heading);
+          break;
+        }
+      }
+    });
+  });
+
+}).call(this);
+
