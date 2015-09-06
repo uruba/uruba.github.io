@@ -534,7 +534,6 @@ section {
 
       display: inline-block;
 
-      margin: 0 auto;
       padding: 25px 32px;
 
       background-color: $main_orange;
@@ -547,7 +546,7 @@ section {
 
       @include horizontal-center;
       @include media-query($super_small_screen) {
-        padding: 15px 18px;
+        padding: 24px 18px;
       }
     }
   }

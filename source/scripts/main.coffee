@@ -83,7 +83,7 @@ detectIE = () ->
 jQuery ($) ->
   $(document).ready ->
     if detectIE()
-      $('head').append('<link rel="stylesheet" href="ie.css" type="text/css" />')
+      $("head").append('<link rel="stylesheet" href="ie.css" type="text/css" />')
     processLangs()
     cycleChooseMessage(4000)
     return
