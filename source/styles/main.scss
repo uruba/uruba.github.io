@@ -259,7 +259,7 @@ section {
 
       clear:both;
 
-      @include media-query($paragraph_breaking_width) {
+      @include media-query($breakpoint_container_width) {
         left: 0;
       }
 
