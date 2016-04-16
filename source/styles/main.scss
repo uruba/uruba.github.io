@@ -156,9 +156,7 @@ header {
     width: 100%;
     height: 420px;
 
-    background-image: url("./images/bckg_sky.jpg");
-    background-position: center 0;
-    background-attachment: fixed;
+    @include background-colour-gradient(#303645, #41404e, 66%, #564c59);
 
     @include media-query($narrow_screen) {
       height: 100%;

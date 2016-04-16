@@ -64,6 +64,13 @@
   color: white;
 }
 
+@mixin background-colour-gradient ($start_colour, $inter_colour, $inter_perc, $end_colour) {
+    background: $start_colour; /* Old browsers */
+    background: -moz-linear-gradient(top, $start_colour 0%, $inter_colour $inter_perc, $end_colour 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, $start_colour 0%,$inter_colour $inter_perc,$end_colour 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, $start_colour 0%,$inter_colour $inter_perc,$end_colour 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
 @mixin filter-grayscale {
   filter: gray;
   filter: grayscale(1);
